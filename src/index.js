@@ -7,9 +7,9 @@ import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <UserStore>
-    <BrowserRouter>
+  <BrowserRouter>
+    <UserStore>
       <App />
-    </BrowserRouter>
-  </UserStore>
+    </UserStore>
+  </BrowserRouter>
 );
