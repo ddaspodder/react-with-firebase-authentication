@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { UserContext } from "../../store/UserStore";
+import { SessionContext } from "../../store/SessionStore";
 import classes from "./MainNavigation.module.css";
 
 const MainNavigation = () => {
   const {
-    user: { isLoggedIn },
-    resetUser,
-  } = useContext(UserContext);
-  
+    session: { isLoggedIn },
+    resetSession,
+  } = useContext(SessionContext);
+
   const { push } = useHistory();
 
   const onLogout = () => {
-    resetUser();
+    resetSession();
     push("/");
   };
 
