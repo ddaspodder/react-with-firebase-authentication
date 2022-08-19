@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
+import { SessionContext } from "../../store/SessionStore";
 import MoviesList from "./MoviesList";
 import AddMovie from "./AddMovie";
 import classes from "./StartingPageContent.module.css";
@@ -8,12 +9,16 @@ const StartingPageContent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const {
+    session: { idToken },
+  } = useContext(SessionContext);
+
   const fetchMoviesHandler = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
       const response = await fetch(
-        "https://restapi-51ed5-default-rtdb.firebaseio.com/movies.json"
+        `https://restapi-51ed5-default-rtdb.firebaseio.com/movies.json?auth=${idToken}`
       );
       if (!response.ok) {
         throw new Error("Something went wrong!");
@@ -46,7 +51,7 @@ const StartingPageContent = () => {
     console.log(movie);
     try {
       const res = await fetch(
-        "https://restapi-51ed5-default-rtdb.firebaseio.com/movies.json",
+        `https://restapi-51ed5-default-rtdb.firebaseio.com/movies.json?auth=${idToken}`,
         {
           method: "POST",
           body: JSON.stringify(movie),

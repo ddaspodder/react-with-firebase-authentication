@@ -46,7 +46,16 @@ const AuthForm = () => {
           if (response.ok) {
             response.json().then((data) => {
               const { email, expiresIn, idToken } = data;
-              setSession({ email, expiresIn, idToken, isLoggedIn: true });
+              const expiresAt = new Date(
+                new Date().getTime() + +expiresIn * 1000
+              ).toString();
+              setSession({
+                email,
+                expiresIn,
+                idToken,
+                expiresAt,
+                isLoggedIn: true,
+              });
               console.log("authentication", data);
             });
           } else {
