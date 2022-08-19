@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { UserContext } from "../../store/UserStore";
+import { SessionContext } from "../../store/SessionStore";
 import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
@@ -7,7 +7,7 @@ const AuthForm = () => {
   let emailRef = null;
   let passwordRef = null;
 
-  const { setUser } = useContext(UserContext);
+  const { setSession } = useContext(SessionContext);
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -46,7 +46,7 @@ const AuthForm = () => {
           if (response.ok) {
             response.json().then((data) => {
               const { email, expiresIn, idToken } = data;
-              setUser({ email, expiresIn, idToken, isLoggedIn: true });
+              setSession({ email, expiresIn, idToken, isLoggedIn: true });
               console.log("authentication", data);
             });
           } else {

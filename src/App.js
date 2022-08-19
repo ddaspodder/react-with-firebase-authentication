@@ -4,12 +4,12 @@ import Layout from "./components/Layout/Layout";
 import UserProfile from "./components/Profile/UserProfile";
 import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
-import { UserContext } from "./store/UserStore";
+import { SessionContext } from "./store/SessionStore";
 
 function App() {
   const {
-    user: { isLoggedIn },
-  } = useContext(UserContext);
+    session: { isLoggedIn },
+  } = useContext(SessionContext);
 
   return (
     <Layout>
