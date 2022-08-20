@@ -1,0 +1,13 @@
+.error-wrapper {
+  color: #38015c;
+  text-align: center;
+  margin-top: 100px;
+}
+.error-wrapper h1 {
+  padding: 20px;
+  margin-bottom: 30px;
+  font-size: 48px;
+}
+.error-wrapper p {
+  padding: 20px;
+}

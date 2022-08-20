@@ -4,6 +4,7 @@ import Layout from "./components/Layout/Layout";
 import UserProfile from "./components/Profile/UserProfile";
 import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
+import ErrorPage from "./pages/ErrorPage";
 import { SessionContext } from "./store/SessionStore";
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path="/profile">
           {isLoggedIn ? <UserProfile /> : <Redirect to="/auth" />}
+        </Route>
+        <Route path="*">
+          <ErrorPage />
         </Route>
       </Switch>
     </Layout>
